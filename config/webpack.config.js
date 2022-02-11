@@ -71,8 +71,8 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
-const lessRegex = /.less$/;
-const lessModuleRegex = /.module.less$/;
+const lessRegex = /\.less$/;
+const lessModuleRegex = /\.module.less$/;
 
 const hasJsxRuntime = (() => {
   if (process.env.DISABLE_NEW_JSX_TRANSFORM === 'true') {
@@ -122,10 +122,10 @@ module.exports = function (webpackEnv) {
         loader: require.resolve('css-loader'),
         options: cssOptions,
       },
-      {
-        loader: require.resolve('less-loader'),
-        options: lessOptions,
-      },
+      // {
+      //   loader: require.resolve('less-loader'),
+      //   options: lessOptions,
+      // },
       {
         // Options for PostCSS as we reference these options twice
         // Adds vendor prefixing based on your specified browser support in
@@ -173,6 +173,21 @@ module.exports = function (webpackEnv) {
       },
     ].filter(Boolean);
     if (preProcessor) {
+      // let loader = {
+      //   loader: require.resolve(preProcessor),
+      //   options: {
+      //     sourceMap: isEnvProduction && shouldUseSourceMap,
+      //   },
+      // }
+      // if (preProcessor === 'less-loader') {
+      //   loader.options.modifyVars = {
+      //     'primary-color': '#000000',
+      //     'link-color': '#1DA57A',
+      //     'border-radius-base': '2px',
+      //   }
+      //   loader.options.javascriptEnabled = true
+      // }
+      // loaders.push(loader);
       loaders.push(
         {
           loader: require.resolve('resolve-url-loader'),
@@ -515,6 +530,7 @@ module.exports = function (webpackEnv) {
                     ? shouldUseSourceMap
                     : isEnvDevelopment,
                 },
+
                 'less-loader'
               ),
               sideEffects: true,
@@ -531,6 +547,7 @@ module.exports = function (webpackEnv) {
                     getLocalIdent: getCSSModuleLocalIdent,
                   },
                 },
+
                 'less-loader'
               ),
             },

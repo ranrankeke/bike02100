@@ -1,8 +1,11 @@
 import './index.less'
+//import 'antd/dist/antd.css'
+import Admin from './admin'
 function App() {
   return (
-    <div className="App">
-      <div className='app'>加油</div>
+    <div >
+
+      <Admin />
     </div>
   );
 }

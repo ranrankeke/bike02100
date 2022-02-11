@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { Input, Button, Menu, Icon } from 'antd'
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
+import { Input, Button, Menu } from 'antd'
+import './index.less'
+import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+
+const { SubMenu } = Menu;
 
 function handleClick(e) {
     console.log('click', e);
@@ -12,7 +14,7 @@ function handleClick(e) {
 export default class NavLeft extends Component {
     render() {
         return (
-            <div>
+            <div className='gbike'>
                 <div className='logo'>
                     <img src="/assets/logo-ant.svg" alt="" />
                     <h1>Imooc MS</h1>
@@ -20,33 +22,17 @@ export default class NavLeft extends Component {
                 <Button type="primary">提交</Button>
                 <Input styp="text" />
                 <Menu onClick={handleClick} style={{ width: 256 }} mode="vertical">
-                    <SubMenu
-                        key="sub1"
-                        title={
-                            <span>
-                                <Icon type="mail" />
-                                <span>Navigation One</span>
-                            </span>
-                        }
-                    >
+                    <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
                         <Menu.ItemGroup title="Item 1">
                             <Menu.Item key="1">Option 1</Menu.Item>
                             <Menu.Item key="2">Option 2</Menu.Item>
                         </Menu.ItemGroup>
-                        <Menu.ItemGroup title="Iteom 2">
+                        <Menu.ItemGroup title="Item 2">
                             <Menu.Item key="3">Option 3</Menu.Item>
                             <Menu.Item key="4">Option 4</Menu.Item>
                         </Menu.ItemGroup>
                     </SubMenu>
-                    <SubMenu
-                        key="sub2"
-                        title={
-                            <span>
-                                <Icon type="appstore" />
-                                <span>Navigation Two</span>
-                            </span>
-                        }
-                    >
+                    <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Navigation Two">
                         <Menu.Item key="5">Option 5</Menu.Item>
                         <Menu.Item key="6">Option 6</Menu.Item>
                         <SubMenu key="sub3" title="Submenu">
@@ -54,15 +40,7 @@ export default class NavLeft extends Component {
                             <Menu.Item key="8">Option 8</Menu.Item>
                         </SubMenu>
                     </SubMenu>
-                    <SubMenu
-                        key="sub4"
-                        title={
-                            <span>
-                                <Icon type="setting" />
-                                <span>Navigation Three</span>
-                            </span>
-                        }
-                    >
+                    <SubMenu key="sub4" icon={<SettingOutlined />} title="Navigation Three">
                         <Menu.Item key="9">Option 9</Menu.Item>
                         <Menu.Item key="10">Option 10</Menu.Item>
                         <Menu.Item key="11">Option 11</Menu.Item>

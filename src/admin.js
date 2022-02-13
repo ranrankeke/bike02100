@@ -3,6 +3,7 @@ import { Row, Col } from 'antd'
 import NavLeft from './components/NavLeft'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Home from '../src/pages/home'
 import './style/common.less'
 export default class Admin extends Component {
     render() {
@@ -14,7 +15,7 @@ export default class Admin extends Component {
                 </Col>
                 <Col span={20} className="main">
                     <div><Header /></div>
-                    <div className='content'>content</div>
+                    <div className='content'><Home /></div>
                     <div><Footer /></div>
                 </Col>
             </Row>

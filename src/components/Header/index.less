@@ -1,4 +1,6 @@
+@import '../../style/default.less'; 
 .header{
+    background-color: @colorM;
     .header-top{
         height:60px;
         line-height:60px;
@@ -12,8 +14,24 @@
     .breadcrumb{
         height:40px;
         line-height:40px;
+        //面包屑 导航显示当前位置
         .breadcrumb-title{
+            font-size: @fontC;
             text-align: center;
+            // 伪类
+            //下三角
+            &:after{
+                position:absolute;
+                content:'';
+                left:82px;
+                top:40px;
+                border:10px solid @colorM;
+                border-bottom:10px solid transparent;
+                border-left:10px solid transparent;
+                border-right:10px solid transparent;
+
+
+            }
         }
         .weather{
             text-align: right;

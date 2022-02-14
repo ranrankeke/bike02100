@@ -15,10 +15,10 @@ export default class Admin extends Component {
                 </Col>
                 <Col span={20} className="main">
                     <Header />
-                    <Row className='content'>
+                    <div className='content'>
                         {/* <Home /> */}
                         {this.props.children}
-                    </Row>
+                    </div>
 
                     <Footer />
                 </Col>

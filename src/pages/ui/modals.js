@@ -12,7 +12,7 @@ export default class Modals extends React.Component {
         })
     }
     handleConfirm = (type) => {
-        Modal.confirm({
+        Modal[type]({
             title: '确认?',
             content: '你确认学会react了吗',
             onkey() {
@@ -35,10 +35,10 @@ export default class Modals extends React.Component {
                 </Card>
                 <Card title="信息确认框" className='card-wrap'>
                     {/* 事件处理函数 如果传参数的话 必须使用箭头函数 你传参数的话 直接this.handle */}
-                    <Button type="primary" onClick={() => this.handleConfirm('showModal1')}>Open</Button>
-                    <Button type="primary" onClick={() => this.handleConfirm('showModal2')}>自定义页脚</Button>
-                    <Button type="primary" onClick={() => this.handleConfirm('showModal3')}>顶部20px弹框</Button>
-                    <Button type="primary" onClick={() => this.handleConfirm('showModal4')}>水平垂直居中</Button>
+                    <Button type="primary" onClick={() => this.handleConfirm('confirm')}>Confirm</Button>
+                    <Button type="primary" onClick={() => this.handleConfirm('info')}>Info</Button>
+                    <Button type="primary" onClick={() => this.handleConfirm('success')}>Success</Button>
+                    <Button type="primary" onClick={() => this.handleConfirm('warning')}>Warning</Button>
                 </Card>
                 <Modal title="React" visible={this.state.showModal1} onCancel={() => {
                     this.setState({

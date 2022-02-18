@@ -13,6 +13,8 @@ import Tabs from './pages/ui/tabs'
 import Gallery from './pages/ui/gallery'
 import Carousel from './pages/ui/carousel'
 import FormLogin from './pages/form/login'
+import FormRegister from './pages/form/register'
+import BasicTable from './pages/table/basicTable'
 export default class Router extends React.Component {
     render() {
         return (
@@ -32,6 +34,8 @@ export default class Router extends React.Component {
                                 <Route path="/admin/ui/gallery" component={Gallery} />
                                 <Route path="/admin/ui/carousel" component={Carousel} />
                                 <Route path="/admin/form/login" component={FormLogin} />
+                                <Route path="/admin/form/reg" component={FormRegister} />
+                                <Route path="/admin/table/basic" component={BasicTable} />
                                 <Route component={NoMacth} />
                             </Admin>å
                         </Switch>

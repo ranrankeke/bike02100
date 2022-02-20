@@ -23,8 +23,9 @@ export default class Router extends React.Component {
 
                     <Route path="/login" component={Login} />
                     <Route path="/admin" render={() =>
-                        <Switch>
-                            <Admin>
+
+                        <Admin>
+                            <Switch>
                                 <Route path="/admin/ui/buttons" component={Buttons} />
                                 <Route path="/admin/ui/modals" component={Modals} />
                                 <Route path="/admin/ui/loading" component={Loading} />
@@ -36,9 +37,10 @@ export default class Router extends React.Component {
                                 <Route path="/admin/form/login" component={FormLogin} />
                                 <Route path="/admin/form/reg" component={FormRegister} />
                                 <Route path="/admin/table/basic" component={BasicTable} />
-                                <Route component={NoMacth} />
-                            </Admin>å
-                        </Switch>
+                                <Route path="*" component={NoMacth} />
+                            </Switch>
+                        </Admin>
+
                     } />
                     <Route patch="/order/detail" component={Login} />
 

@@ -2,7 +2,9 @@ import axios from 'axios'
 import { Modal } from 'antd'
 export default class Axios {
     static ajax(options) {
+        // debugger
         let loading;
+
         if (options.data && options.data.isShowLoading !== false) {
             loading = document.getElementById("ajaxLoading");
             loading.style.display = 'block';
@@ -18,7 +20,7 @@ export default class Axios {
             }).then((response) => {
                 if (options.data && options.data.isShowLoading !== false) {
                     loading = document.getElementById("ajaxLoading");
-                    loading.style.display = 'block';
+                    loading.style.display = 'none';
                 }
                 if (response.status === 200) {
                     let res = response.data;

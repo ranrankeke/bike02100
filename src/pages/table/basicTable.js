@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import { Card, Table, Modal, message, Button } from 'antd'
 import axios from '../../axios'
+import utils from '../../utils/utils'
 
 export default class BasicTable extends Component {
     state = {
 
+    }
+    //不需要this.setState 重新渲染  因为是接口需要 而不是页面需要？？？
+    params = {
+        page: 1
     }
     componentDidMount() {
         const dataSource = [
@@ -38,13 +43,16 @@ export default class BasicTable extends Component {
         })
         this.request();
     }
+    //动态获取mock数据
     request = () => {
+        //避免作用域出现问题
+        let _this = this;
         //二次封装的axios 便于错误拦截处理 和 loading效果
         axios.ajax({
             url: '/table/list',
             data: {
                 params: {
-                    page: 1
+                    page: this.params.page
                 }
             }
         }).then((res) => {
@@ -57,11 +65,14 @@ export default class BasicTable extends Component {
                 this.setState({
                     dataSource2: res.result.list,
                     selecetedRowKeys: [],
-                    selectedRows: null
+                    selectedRows: null,
+                    pagination: utils.pagination(res, (current) => {
+                        _this.params.page = current;
+                        this.request();
+                    })
                 })
             }
         })
-
     }
     onRowClick = (record, index) => {
         //选中的索引值
@@ -181,6 +192,8 @@ export default class BasicTable extends Component {
                     selectedRowKeys,
                     selectedRows
                 })
+                console.log('selectedRowKeys', selectedRowKeys);
+                console.log('selectedRows', selectedRows);
             }
         }
         return (
@@ -225,17 +238,20 @@ export default class BasicTable extends Component {
                     </div>
                     <Table columns={columns}
                         rowSelection={rowCheckSelection}
-                        // onRow={(record, index) => {
-                        //     return {
-                        //         onClick: () => {
-                        //             this.onRowClick(record, index);
-
-                        //         }
-                        //     }
-                        // }}
                         dataSource={this.state.dataSource2}
                         bordered
                         pagination={false}
+                    />
+                </Card>
+                <Card title="Mock-表格分页" style={{ margin: '10px 0' }}>
+                    <div style={{ marginBottom: 10 }}>
+                        <Button onClick={this.handleDelete}>删除</Button>
+                    </div>
+                    <Table columns={columns}
+                        rowSelection={rowCheckSelection}
+                        dataSource={this.state.dataSource2}
+                        bordered
+                        pagination={this.state.pagination}
                     />
                 </Card>
             </div >

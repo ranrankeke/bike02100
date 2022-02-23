@@ -100,7 +100,7 @@ export default class FormLogin extends Component {
                                 span: 16,
                             }}
                         >
-                            <Checkbox>Remember me</Checkbox>
+                            <Checkbox >Remember me</Checkbox>
                         </Form.Item>
 
                         <Form.Item

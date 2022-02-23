@@ -117,8 +117,8 @@ export default class FormRegister extends Component {
                                 <Option value="6">桌球</Option>
                             </Select>
                         </Form.Item>
-                        <Form.Item label="是否已婚" name="marry" {...formItemLayout}>
-                            <Switch defaultChecked />
+                        <Form.Item label="是否已婚" name="marry" {...formItemLayout} valuePropName="checked">
+                            <Switch />
                         </Form.Item>
                         <Form.Item label="生日" name="birthday" {...formItemLayout}>
                             <Space direction="vertical">
@@ -134,10 +134,10 @@ export default class FormRegister extends Component {
                         <Form.Item label="头像" {...formItemLayout}>
 
                         </Form.Item>
-                        <Form.Item name="xieyi" {...offsetLayout}>
+                        <Form.Item name="xieyi" {...offsetLayout} valuePropName="checked">
                             <Checkbox>我已阅读过<a href="#">慕课协议</a></Checkbox>
                         </Form.Item>
-                        <Form.Item  {...offsetLayout} rules={[{ required: true }]} >
+                        <Form.Item  {...offsetLayout} rules={[{ required: true }]} valuePropName="checked" >
                             <Button type="primary" htmlType="submit">注册</Button>
                         </Form.Item>
                     </Form>

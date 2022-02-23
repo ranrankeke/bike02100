@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Table } from 'antd'
+import { Card, Table, Badge, message, Button, Modal } from 'antd'
 import axios from './../../axios'
 import utils from './../../utils/utils'
 export default class highTable extends Component {
@@ -38,12 +38,21 @@ export default class highTable extends Component {
         })
     }
     handleChange = (pagination, filters, sorter) => {
-
         this.setState({
-
             sortOrder: sorter.order
         })
         console.log(sorter)
+    }
+    handleDelete = (item) => {
+        let id = item.id;
+        Modal.confirm({
+            title: '确认',
+            content: '您确认要删除此条数据吗',
+            onOk: () => {
+                message.success('删除成功');
+                this.request();
+            }
+        })
     }
     render() {
         const columns = [
@@ -312,6 +321,85 @@ export default class highTable extends Component {
                 dataIndex: 'time'
             }
         ]
+        const columns4 = [
+            {
+                title: 'id',
+                key: 'id',
+                dataIndex: 'id',
+            },
+            {
+                title: '用户',
+                key: 'username',
+                dataIndex: 'username',
+            },
+            {
+                title: '性别',
+                key: 'sex',
+                dataIndex: 'sex',
+                render(sex) {
+                    return sex === 1 ? '男' : '女'
+                }
+            },
+            {
+                title: '年龄',
+                key: 'age',
+                dataIndex: 'age'
+            },
+            {
+                title: '状态',
+                key: 'state',
+                dataIndex: 'state',
+                render(state) {
+                    let config = {
+                        '1': '咸鱼一条',
+                        '2': '前端小白',
+                        '3': '有为青年',
+                        '4': '创业者',
+                        "5": '风华才子'
+                    }
+                    return config[state];
+                }
+            },
+            {
+                title: '爱好',
+                key: 'interest',
+                dataIndex: 'interest',
+                render(state) {
+                    let config = {
+                        '1': <Badge status='success' text='打篮球' />,
+                        '2': <Badge status='success' text='踢足球' />,
+                        '3': <Badge status='success' text='打乒乓球' />,
+                        '4': <Badge status='success' text='打羽毛球' />,
+                        '5': <Badge status='success' text='打网球' />,
+                        '6': <Badge status='success' text='爬山' />,
+                        '7': <Badge status='success' text='打游戏' />,
+                        '8': <Badge status='success' text='跑步' />
+                    }
+                    return config[state];
+                }
+            },
+            {
+                title: '生日',
+                key: 'birthday',
+                dataIndex: 'birthday'
+            },
+            {
+                title: '地址',
+                key: 'addrress',
+                dataIndex: 'address'
+            },
+            {
+                title: '早起时间',
+                key: 'time',
+                dataIndex: 'time'
+            },
+            {
+                title: '操作',
+                render: (text, item) => {
+                    return <Button onClick={(item) => this.handleDelete(item)}>删除</Button>
+                }
+            }
+        ]
         return (
             <div>
                 <Card title="头部固定">
@@ -336,6 +424,14 @@ export default class highTable extends Component {
                         bordered
                         pagination={false}
                         onChange={this.handleChange}
+                    />
+                </Card>
+                <Card title="操作按钮" style={{ margin: '10px 0' }}>
+                    <Table columns={columns4}
+                        dataSource={this.state.dataSource}
+                        bordered
+                        pagination={false}
+
                     />
                 </Card>
 

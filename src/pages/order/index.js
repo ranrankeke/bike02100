@@ -160,13 +160,25 @@ export const Order = () => {
         setSelectdItem(record)
 
     }
+    const openOrderDetail = () => {
+        let item = selectedItem;
+        if (!item) {
+            Modal.info({
+                title: '信息',
+                content: '请先选择一条订单'
+            })
+            return;
+        }
+        window.open(`/#/common/order/detail/${item.id}`, '_blank')
+
+    }
     return (
         <div>
             <Card>
                 <FilterForm />
             </Card>
             <Card style={{ marginTop: 10 }}>
-                <Button type="primary" style={{ marginRight: 20 }}>订单详情</Button>
+                <Button type="primary" style={{ marginRight: 20 }} onClick={openOrderDetail}>订单详情</Button>
                 <Button type="primary" onClick={handleConfirm}>结束订单</Button>
             </Card>
             <div className='content-wrap'>

@@ -16,8 +16,8 @@ import FormLogin from './pages/form/login'
 import FormRegister from './pages/form/register'
 import BasicTable from './pages/table/basicTable'
 import HighTable from './pages/table/highTable'
-import City from './pages/city'
-import Order from './pages/order'
+import { City } from './pages/city'
+import { Order } from './pages/order'
 export default class Router extends React.Component {
     render() {
         return (

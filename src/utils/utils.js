@@ -1,4 +1,5 @@
-
+import { Select } from 'antd'
+const { Option } = Select;
 export default {
     formateDate(time) {
         if (!time) return '';
@@ -22,5 +23,14 @@ export default {
             },
             showQuickJumper: true
         }
+    },
+    getOptionList(data) {
+        if (!data) {
+            return [];
+        }
+        let options = [<Option value="0" key="all_key"></Option>];
+        data.map((item) => {
+            options.push(<Option value={item.id} key="all_key">{item.name}</Option>)
+        })
     }
 }

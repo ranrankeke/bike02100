@@ -48,6 +48,7 @@ export default class NavLeft extends Component {
                 <div >
 
                     <Menu
+
                         defaultSelectedKeys={['1']}
                         defaultOpenKeys={['sub1']}
                         mode="inline"
@@ -55,6 +56,7 @@ export default class NavLeft extends Component {
                         inlineCollapsed={this.state.collapsed}
                     >
                         {this.state.menuTreeNode}
+
                     </Menu>
                 </div>
             </div>

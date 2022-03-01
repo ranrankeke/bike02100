@@ -10,10 +10,10 @@ export default class Admin extends Component {
         return (
             //所有列（Col）必须放在 Row 内。
             <Row className='container'>
-                <Col span={4} className="nav-left">
+                <Col className="nav-left" style={{ width: "20%" }}>
                     <NavLeft />
                 </Col>
-                <Col span={20} className="main">
+                <Col className="main" style={{ width: "80%" }}>
                     <Header />
                     <div className='content'>
                         {/* <Home /> */}

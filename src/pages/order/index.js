@@ -14,6 +14,27 @@ export const Order = () => {
     useEffect(() => {
         requestList()
     }, [])
+    const formList = [
+        {
+            type: 'SELECT',
+            label: '城市',
+            field: 'city',
+            placeholder: '全部',
+            width: 100,
+            list: [{ id: '0', name: '全部' }, { id: '0', name: '北京' }, { id: '0', name: '天津' }, { id: '0', name: '杭州' }]
+        },
+        {
+            type: '时间查询'
+        },
+        {
+            type: 'SELECT',
+            label: '订单状态',
+            field: 'order_status',
+            placeholder: '全部',
+            width: 100,
+            list: [{ id: '0', name: '全部' }, { id: '0', name: '进行中' }, { id: '0', name: '结束行程' }]
+        }
+    ]
     const requestList = () => {
         const _this = this;
         axios.ajax({

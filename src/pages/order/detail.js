@@ -9,6 +9,7 @@ export const OrderDetail = (props) => {
         if (orderId) {
             getDetailInfo(orderId);
         }
+
     }, [])
     const getDetailInfo = (orderId) => {
         axios.ajax({
@@ -25,20 +26,29 @@ export const OrderDetail = (props) => {
             }
         })
     }
-    const renderMap = () => {
-        new BMap.Map("orderDetailMap", { enableMapClick: false });
-        // 创建地图实例  
-        var point = new BMap.Point(116.404, 39.915);
-        // 创建点坐标  
-        map.centerAndZoom(point, 15);
-        // 初始化地图，设置中心点坐标和地图级别 
-    }
+    // const renderMap = () => {
+    //     let map = new window.BMapGL.Map("orderDetailMap");
+    //     let point = new window.BMapGL.Point(116.404, 39.915);
+    //     map.conterAndZoo(point, 15);
 
+    //     // map.centerAndZoom(new window.BMapGL.Point(116.404, 39.915), 11);
+    //     // map.addControl(new window.BMapGL.MapTypeControl());
+    //     // map.setCurrentCity("北京");
+    //     // map.enableScrolWheelZoom(true);
+    //     // this.map=new window.BMap.Map('orderDetailMap');
+    //     // this.map.contentAndZoom('北京',11);
+    //     // this.addMapContorl();
+    // }
+    //添加地图控件
+    // const addMapContorl=()=>{
+    //     let map=this.map;
+    //     map.addControl(new window)
+    // }
     return (
 
         <div>
             <Card>
-                <div id="orderDetailMap"></div>
+                <div id="orderDetailMap" ></div>
                 <div className="detail-items">
                     <div className="item-title">基础信息</div>
                     <ul className="detail-form">

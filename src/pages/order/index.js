@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from 'react'
 import { Card, Form, Select, Button, Table, DatePicker, Pagination, Modal, message } from 'antd'
 import axios from '../../axios'
 import Utils from '../../utils/utils'
+import { FilterForm } from '../../components/BaseForm'
 const { Option } = Select;
 export const Order = () => {
     const [list, setList] = useState([]);
@@ -11,17 +12,22 @@ export const Order = () => {
     const [orderInfo, setOrderInfo] = useState({});
     const [selectedRowKeys, setSelectedRowKeys] = useState();
     const [selectedItem, setSelectdItem] = useState();
+    const [form] = Form.useForm();
     useEffect(() => {
         requestList()
     }, [])
+    const handleFilter = (params) => {
+        params = params;
+        requestList()
+    }
     const formList = [
         {
             type: 'SELECT',
             label: '城市',
             field: 'city',
-            placeholder: '全部',
+            // placeholder: '全部',
             width: 100,
-            list: [{ id: '0', name: '全部' }, { id: '0', name: '北京' }, { id: '0', name: '天津' }, { id: '0', name: '杭州' }]
+            list: [{ id: '0', name: '全部' }, { id: '1', name: '北京' }, { id: '2', name: '天津' }, { id: '3', name: '杭州' }]
         },
         {
             type: '时间查询'
@@ -30,9 +36,9 @@ export const Order = () => {
             type: 'SELECT',
             label: '订单状态',
             field: 'order_status',
-            placeholder: '全部',
+            // placeholder: '全部',
             width: 100,
-            list: [{ id: '0', name: '全部' }, { id: '0', name: '进行中' }, { id: '0', name: '结束行程' }]
+            list: [{ id: '0', name: '全部' }, { id: '1', name: '进行中' }, { id: '2', name: '结束行程' }]
         }
     ]
     const requestList = () => {
@@ -196,7 +202,9 @@ export const Order = () => {
     return (
         <div>
             <Card>
-                <FilterForm />
+                {/* 表单组件封装后 */}
+                <FilterForm formList={formList} filterSubmit={handleFilter} form={form} />
+                {/* <FilterForm1 /> */}
             </Card>
             <Card style={{ marginTop: 10 }}>
                 <Button type="primary" style={{ marginRight: 20 }} onClick={openOrderDetail}>订单详情</Button>
@@ -244,7 +252,7 @@ export const Order = () => {
     )
 
 }
-const FilterForm = (props) => {
+const FilterForm1 = (props) => {
     const { RangePicker } = DatePicker;
     const formItemLayout = {
         labelCol: {

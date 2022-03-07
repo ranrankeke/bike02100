@@ -1,6 +1,16 @@
 import axios from 'axios'
 import { Modal } from 'antd'
 export default class Axios {
+    //static 类方法是在类本身上定义的
+    static requestList(url, params) {
+        var data = {
+            params: params
+        }
+        this.ajax({
+            url: url,
+            data: data
+        })
+    }
     static ajax(options) {
         // debugger
         let loading;

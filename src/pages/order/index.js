@@ -252,43 +252,4 @@ export const Order = () => {
     )
 
 }
-const FilterForm1 = (props) => {
-    const { RangePicker } = DatePicker;
-    const formItemLayout = {
-        labelCol: {
-            span: 5
-        },
-        wrapperCol: {
-            span: 19
-        }
-    }
-    return (
-        <Form layout="inline">
-            <Form.Item label="城市" name="city_id" style={{ width: 140 }}>
-                <Select>
-                    <Option value="">全部</Option>
-                    <Option value="1">北京市</Option>
-                    <Option value="2">天津市</Option>
-                </Select>
-            </Form.Item>
-            <Form.Item label="订单时间">
-                <DatePicker showTime format="YYYY-MM-DD HH:mm:ss" name="start_time" />
-            </Form.Item>
-            <Form.Item label="">
-                <DatePicker showTime format="YYYY-MM-DD HH:mm:ss" name="end_time" />
-                {/* <RangePicker renderExtraFooter={() => 'extra footer'} showTime /> */}
-            </Form.Item>
-            <Form.Item label="订单状态" style={{ width: 180 }}>
-                <Select>
-                    <Option value="">全部</Option>
-                    <Option value="1">进行中</Option>
-                    <Option value="2">结束行程</Option>
-                </Select>
-            </Form.Item>
-            <Form.Item>
-                <Button type="primary" style={{ marginRight: 10 }}>查询</Button>
-                <Button>重置</Button>
-            </Form.Item>
-        </Form>
-    )
-}
+

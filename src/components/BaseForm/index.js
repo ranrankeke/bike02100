@@ -20,22 +20,22 @@ export const FilterForm = (props) => {
                 let placeholder = item.placeholder;
                 let width = item.width;
                 if (item.type == '时间查询') {
-                    const start_time = <Form.Item label="订单时间" key={field}>
+                    const start_time = <Form.Item label="订单时间" key={field} name="start_time" >
                         <DatePicker showTime={true} />
                     </Form.Item>
                     formItemList.push(start_time);
-                    const end_time = <Form.Item label="~" colon={false} key={field}>
+                    const end_time = <Form.Item label="~" colon={false} key={field} name="end_time">
                         <DatePicker showTime={true} />
                     </Form.Item>
                     formItemList.push(end_time);
                 } else if (item.type == 'INPUT') {
-                    const INPUT = <Form.Item label={label} key={field}>
+                    const INPUT = <Form.Item label={label} key={field} >
                         <Input type="text" placeholder={placeholder} />
                     </Form.Item>
                     formItemList.push(INPUT);
                 } else if (item.type == 'SELECT') {
                     const SELECT =
-                        <Form.Item label={label} key={field}>
+                        <Form.Item label={label} key={field} name="order_status">
                             <Select style={{ width: width }} placeholder={placeholder}>
                                 {Utils.getOptionList(item.list)}
                             </Select>
@@ -53,21 +53,12 @@ export const FilterForm = (props) => {
         }
         return formItemList;
     }
-    // const onFinish = (values) => {
-    //     console.log('Success:', values);
-    // };
-
-    // const onFinishFailed = (errorInfo) => {
-    //     console.log('Failed:', errorInfo);
-    // };
     const reset = () => {
         props.form.resetFields();
     }
     return (
         <Form form={props.form}
             layout="inline"
-        // onFinish={onFinish}
-        // onFinishFailed={onFinishFailed}
         >
             {initFormList()}
             <Form.Item>

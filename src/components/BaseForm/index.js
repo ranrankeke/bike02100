@@ -19,36 +19,73 @@ export const FilterForm = (props) => {
                 let field = item.field;
                 let placeholder = item.placeholder;
                 let width = item.width;
-                if (item.type == '时间查询') {
-                    const start_time = <Form.Item label="订单时间" key={field} name="start_time" >
-                        <DatePicker showTime={true} />
-                    </Form.Item>
-                    formItemList.push(start_time);
-                    const end_time = <Form.Item label="~" colon={false} key={field} name="end_time">
-                        <DatePicker showTime={true} />
-                    </Form.Item>
-                    formItemList.push(end_time);
-                } else if (item.type == 'INPUT') {
-                    const INPUT = <Form.Item label={label} key={field} >
-                        <Input type="text" placeholder={placeholder} />
-                    </Form.Item>
-                    formItemList.push(INPUT);
-                } else if (item.type == 'SELECT') {
-                    const SELECT =
-                        <Form.Item label={label} key={field} name="order_status">
-                            <Select style={{ width: width }} placeholder={placeholder}>
-                                {Utils.getOptionList(item.list)}
-                            </Select>
+                switch (item.type) {
+                    case '时间查询':
+                        const start_time = <Form.Item label="订单时间" key={field} name="start_time" >
+                            <DatePicker showTime={true} />
                         </Form.Item>
-                    formItemList.push(SELECT);
-                } else if (item.type == 'CHECKBOX') {
-                    const CHECKBOX = <Form.Item label={label} key={field}>
-                        <Checkbox>
-                            {label}
-                        </Checkbox>
-                    </Form.Item>
-                    formItemList.push(CHECKBOX);
+                        formItemList.push(start_time);
+                        const end_time = <Form.Item label="~" colon={false} key={field} name="end_time">
+                            <DatePicker showTime={true} />
+                        </Form.Item>
+                        formItemList.push(end_time);
+                        break
+                    case 'SELECT':
+                        const SELECT =
+                            <Form.Item label={label} key={field} name="order_status">
+                                <Select style={{ width: width }} placeholder={placeholder}>
+                                    {Utils.getOptionList(item.list)}
+                                </Select>
+                            </Form.Item>
+                        formItemList.push(SELECT);
+                        break
+                    case 'INPUT':
+                        const INPUT = <Form.Item label={label} key={field} >
+                            <Input type="text" placeholder={placeholder} />
+                        </Form.Item>
+                        formItemList.push(INPUT);
+                        break;
+                    case 'CHECKBOX':
+                        const CHECKBOX = <Form.Item label={label} key={field}>
+                            <Checkbox>
+                                {label}
+                            </Checkbox>
+                        </Form.Item>
+                        formItemList.push(CHECKBOX);
+                        break
+                    default:
+                        break;
                 }
+                // if (item.type == '时间查询') {
+                //     const start_time = <Form.Item label="订单时间" key={field} name="start_time" >
+                //         <DatePicker showTime={true} />
+                //     </Form.Item>
+                //     formItemList.push(start_time);
+                //     const end_time = <Form.Item label="~" colon={false} key={field} name="end_time">
+                //         <DatePicker showTime={true} />
+                //     </Form.Item>
+                //     formItemList.push(end_time);
+                // } else if (item.type == 'INPUT') {
+                //     const INPUT = <Form.Item label={label} key={field} >
+                //         <Input type="text" placeholder={placeholder} />
+                //     </Form.Item>
+                //     formItemList.push(INPUT);
+                // } else if (item.type == 'SELECT') {
+                //     const SELECT =
+                //         <Form.Item label={label} key={field} name="order_status">
+                //             <Select style={{ width: width }} placeholder={placeholder}>
+                //                 {Utils.getOptionList(item.list)}
+                //             </Select>
+                //         </Form.Item>
+                //     formItemList.push(SELECT);
+                // } else if (item.type == 'CHECKBOX') {
+                //     const CHECKBOX = <Form.Item label={label} key={field}>
+                //         <Checkbox>
+                //             {label}
+                //         </Checkbox>
+                //     </Form.Item>
+                //     formItemList.push(CHECKBOX);
+                // }
             })
         }
         return formItemList;

@@ -3,6 +3,7 @@ import { Card, Form, Select, Button, Table, DatePicker, Pagination, Modal, messa
 import axios from '../../axios'
 import Utils from '../../utils/utils'
 import { FilterForm } from '../../components/BaseForm'
+import { RequestList } from '../../axios/demo'
 const { Option } = Select;
 export const Order = () => {
     const [list, setList] = useState([]);
@@ -42,7 +43,8 @@ export const Order = () => {
         }
     ]
     const requestList = () => {
-        const _this = this;
+        // RequestList('/order/list')
+        let _this = this
         axios.ajax({
             url: '/order/list',
             data: {

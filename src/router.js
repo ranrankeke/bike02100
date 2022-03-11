@@ -1,5 +1,5 @@
 import React from 'react'
-import { HashRouter, Route, Switch } from 'react-router-dom'
+import { HashRouter, Route, Switch, Link } from 'react-router-dom'
 import App from './App'
 import Login from './pages/login/index'
 import Admin from './admin'
@@ -25,7 +25,7 @@ export default class Router extends React.Component {
         return (
             <HashRouter>
                 <App>
-
+                    <Link to="/admin">点击进入首页</Link>
                     <Route path="/login" component={Login} />
                     <Route path="/admin" render={() =>
 
